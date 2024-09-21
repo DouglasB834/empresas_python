@@ -1,3 +1,22 @@
+
+## Como Baixar o Projeto
+
+Para baixar este projeto do GitHub, siga os passos abaixo:
+
+1. **Clone o repositório**:
+   Abra seu terminal e execute o seguinte comando:
+   ```bash
+   git clone https://github.com/usuario/nome-do-repositorio.git
+   ```
+   
+2. **Navegue até a pasta do projeto**:
+   ```bash
+   cd nome-do-repositorio
+   ```
+
+3. **Siga as instruções de instalação**:
+   Continue com as instruções de instalação do ambiente virtual e bibliotecas necessárias.
+
 ## Como Rodar com VENV (Ambiente Virtual Python)
 
 Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente virtual Python. Abaixo, forneceremos um guia completo de instalação para rodar sua API em qualquer sistema operacional:
