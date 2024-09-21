@@ -1,15 +1,16 @@
-
 ## Como Baixar o Projeto
 
 Para baixar este projeto do GitHub, siga os passos abaixo:
 
 1. **Clone o repositório**:
    Abra seu terminal e execute o seguinte comando:
+
    ```bash
-   git clone https://github.com/usuario/nome-do-repositorio.git
+   git clone https://github.com/DouglasB834/empresas_python
    ```
-   
+
 2. **Navegue até a pasta do projeto**:
+
    ```bash
    cd nome-do-repositorio
    ```
@@ -67,18 +68,18 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
 ## Como Acessar a Documentação da API com Swagger
 
 1. **Acesse o Swagger**:
-Abra o seu navegador e digite a seguinte URL:
-**[http://localhost:5000/swagger/](http://localhost:5000/apidocs/#/default/get_companies)**
+   Abra o seu navegador e digite a seguinte URL:
+   **[http://localhost:5000/swagger/](http://localhost:5000/apidocs/#/default/get_companies)**
 
 2. **Interaja com a API**:
-Uma vez na página do Swagger, você verá uma lista das rotas disponíveis. Clique na rota desejada para expandir suas opções. Você pode visualizar a documentação e testar as requisições diretamente pela interface.
+   Uma vez na página do Swagger, você verá uma lista das rotas disponíveis. Clique na rota desejada para expandir suas opções. Você pode visualizar a documentação e testar as requisições diretamente pela interface.
 
 3. **Realize Requisições**:
-Para testar uma requisição:
+   Para testar uma requisição:
+
 - Clique no botão **"Try it out"**.
 - Preencha os parâmetros necessários no corpo da requisição.
 - Clique em **"Execute"** para enviar a requisição e visualizar a resposta diretamente no Swagger.
-
 
 ### Criar Empresa
 
