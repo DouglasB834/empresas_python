@@ -33,7 +33,6 @@ def validate_company_data(data):
     
     return True, None
 
-
 def validate_update_data(data):
     required_fields = ['business_name', 'cnae']
     cnae = data['cnae']
@@ -47,7 +46,6 @@ def validate_update_data(data):
     
     return True, None
 
-
 def format_company_response(company):
     response = {
         "cnpj": company.cnpj,
@@ -59,7 +57,6 @@ def format_company_response(company):
     if company.deleted_at:
         response["deleted_at"] = company.deleted_at
     return response
-
 
 def list_companies():
     offset = request.args.get('offset', default = 0, type = int)
@@ -89,7 +86,7 @@ def list_companies():
 
     total_pages = (total_companies // limit) + ( 1 if total_companies % limit > 0 else 0 ) 
    
-    current_page = (offset // limit) + 1
+    current_page = (offset // limit) 
 
     if offset >= total_companies or current_page > total_pages:
         return make_response(message="Página inválida. Não há mais registros.", status_code = 400 )
@@ -105,7 +102,6 @@ def list_companies():
         "current_page": current_page,
         "empresas": result,
     })
-
 
 def get_company():
     try:
@@ -123,7 +119,6 @@ def get_company():
         return make_response(data=result, status_code=200)
     except Exception as e:
         return make_response(message=f"Erro ao buscar a empresa: {str(e)}", status_code=500)
-
 
 def create_company():
     try:
