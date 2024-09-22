@@ -140,7 +140,7 @@ def get_modify_company_swagger():
             {
                 'name': 'cnpj',
                 'in': 'path',
-                'type': 'string',  # O tipo deve ser string para o CNPJ
+                'type': 'string',
                 'required': True,
                 'description': 'CNPJ da empresa a ser atualizada'
             },
