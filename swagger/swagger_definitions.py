@@ -135,14 +135,14 @@ def get_add_company_swagger():
     })
 
 def get_modify_company_swagger():
-    return swag_from({
+  return swag_from({
         'parameters': [
             {
-                'name': 'id',
+                'name': 'cnpj',
                 'in': 'path',
-                'type': 'integer',
+                'type': 'string',  # O tipo deve ser string para o CNPJ
                 'required': True,
-                'description': 'ID da empresa a ser atualizada'
+                'description': 'CNPJ da empresa a ser atualizada'
             },
             {
                 'name': 'body',
@@ -180,11 +180,11 @@ def get_remove_company_swagger():
     return swag_from({
         'parameters': [
             {
-                'name': 'id',
+                'name': 'cnpj',
                 'in': 'path',
                 'type': 'integer',
                 'required': True,
-                'description': 'ID da empresa a ser removida'
+                'description': ' CNPJ da empresa a ser removida'
             }
         ],
         'responses': {

@@ -32,12 +32,12 @@ def company_details():
 def add_company():
     return create_company()
 
-@company_bp.route('/company/<int:id>', methods=["PATCH"])
+@company_bp.route('/company/<string:cnpj>', methods=["PATCH"])
 @get_modify_company_swagger()
-def modify_company(id):
-    return update_company(id)
+def modify_company(cnpj):
+    return update_company(cnpj)
 
-@company_bp.route('/company/<int:id>', methods=["DELETE"])
+@company_bp.route('/company/<string:cnpj>', methods=['DELETE'])
 @get_remove_company_swagger()
-def remove_company(id):
-    return delete_company(id)
+def delete_company_route(cnpj):
+    return delete_company(cnpj) 

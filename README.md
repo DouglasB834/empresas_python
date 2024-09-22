@@ -165,6 +165,8 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
   - `sort` (opcional): Campo pelo qual ordenar os resultados (padrão: `created_at`). Os campos válidos são: `id`, `cnpj`, `register_name`, `business_name`, `cnae`, `created_at`.
   - `dir` (opcional): Direção da ordenação (`asc` ou `desc`, padrão: `asc`).
 
+  - **Exemplo** : http://localhost:5000/companies?offset=0&limit=10&sort=created_at&dir=asc
+
 **Exemplo de Requisição:**
 **Respostas:**
 
@@ -175,7 +177,7 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
     ```json
     {
       "data": {
-        "total_companies": 100,
+        "total_companies": 50,
         "total_pages": 5,
         "current_page": 1,
         "empresas": [
@@ -276,16 +278,16 @@ GET /company?cnpj=12345678000195
 
 ## Atualizar Empresa
 
-**Endpoint:** `/company/<id>`  
+**Endpoint:** `/company/<cnpj>`  
 **Método:** `PUT`  
 **Descrição:** Atualiza os detalhes de uma empresa com base no ID fornecido.
 
 **Requisição:**
 
-- **URL:** `/company/<id>`
+- **URL:** `/company/<cnpj>`
 - **Método:** `PUT`
 - **Parâmetros:**
-  - `id` (obrigatório): O ID da empresa a ser atualizada.
+  - `cnpj` (obrigatório): O cnpj da empresa a ser atualizada.
 - **Corpo da Requisição (JSON):**
   - `business_name` (opcional): Novo nome fantasia da empresa.
   - `cnae` (opcional): Novo código CNAE da empresa.
@@ -344,16 +346,16 @@ Content-Type: application/json
 
 ## Deletar Empresa
 
-**Endpoint:** `/company/<id>`  
+**Endpoint:** `/company/<cnpj>`  
 **Método:** `DELETE`  
 **Descrição:** Exclui uma empresa do banco de dados com base no ID fornecido.
 
 **Requisição:**
 
-- **URL:** `/company/<id>`
+- **URL:** `/company/<cnpj>`
 - **Método:** `DELETE`
 - **Parâmetros:**
-  - `id` (obrigatório): O ID da empresa a ser excluída.
+  - `cnpj` (obrigatório): O cnpj da empresa a ser excluída.
 
 **Exemplo de Requisição:**
 http
