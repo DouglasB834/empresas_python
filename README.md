@@ -1,15 +1,16 @@
-
 ## Como Baixar o Projeto
 
 Para baixar este projeto do GitHub, siga os passos abaixo:
 
 1. **Clone o repositório**:
    Abra seu terminal e execute o seguinte comando:
+
    ```bash
-   git clone https://github.com/usuario/nome-do-repositorio.git
+   git clone https://github.com/DouglasB834/empresas_python
    ```
-   
+
 2. **Navegue até a pasta do projeto**:
+
    ```bash
    cd nome-do-repositorio
    ```
@@ -67,18 +68,18 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
 ## Como Acessar a Documentação da API com Swagger
 
 1. **Acesse o Swagger**:
-Abra o seu navegador e digite a seguinte URL:
-**[http://localhost:5000/swagger/](http://localhost:5000/apidocs/#/default/get_companies)**
+   Abra o seu navegador e digite a seguinte URL:
+   **[http://localhost:5000/swagger/](http://localhost:5000/apidocs/#/default/get_companies)**
 
 2. **Interaja com a API**:
-Uma vez na página do Swagger, você verá uma lista das rotas disponíveis. Clique na rota desejada para expandir suas opções. Você pode visualizar a documentação e testar as requisições diretamente pela interface.
+   Uma vez na página do Swagger, você verá uma lista das rotas disponíveis. Clique na rota desejada para expandir suas opções. Você pode visualizar a documentação e testar as requisições diretamente pela interface.
 
 3. **Realize Requisições**:
-Para testar uma requisição:
+   Para testar uma requisição:
+
 - Clique no botão **"Try it out"**.
 - Preencha os parâmetros necessários no corpo da requisição.
 - Clique em **"Execute"** para enviar a requisição e visualizar a resposta diretamente no Swagger.
-
 
 ### Criar Empresa
 
@@ -164,6 +165,8 @@ Para testar uma requisição:
   - `sort` (opcional): Campo pelo qual ordenar os resultados (padrão: `created_at`). Os campos válidos são: `id`, `cnpj`, `register_name`, `business_name`, `cnae`, `created_at`.
   - `dir` (opcional): Direção da ordenação (`asc` ou `desc`, padrão: `asc`).
 
+  - **Exemplo** : http://localhost:5000/companies?offset=0&limit=10&sort=created_at&dir=asc
+
 **Exemplo de Requisição:**
 **Respostas:**
 
@@ -174,7 +177,7 @@ Para testar uma requisição:
     ```json
     {
       "data": {
-        "total_companies": 100,
+        "total_companies": 50,
         "total_pages": 5,
         "current_page": 1,
         "empresas": [
@@ -275,16 +278,16 @@ GET /company?cnpj=12345678000195
 
 ## Atualizar Empresa
 
-**Endpoint:** `/company/<id>`  
+**Endpoint:** `/company/<cnpj>`  
 **Método:** `PUT`  
 **Descrição:** Atualiza os detalhes de uma empresa com base no ID fornecido.
 
 **Requisição:**
 
-- **URL:** `/company/<id>`
+- **URL:** `/company/<cnpj>`
 - **Método:** `PUT`
 - **Parâmetros:**
-  - `id` (obrigatório): O ID da empresa a ser atualizada.
+  - `cnpj` (obrigatório): O cnpj da empresa a ser atualizada.
 - **Corpo da Requisição (JSON):**
   - `business_name` (opcional): Novo nome fantasia da empresa.
   - `cnae` (opcional): Novo código CNAE da empresa.
@@ -343,16 +346,16 @@ Content-Type: application/json
 
 ## Deletar Empresa
 
-**Endpoint:** `/company/<id>`  
+**Endpoint:** `/company/<cnpj>`  
 **Método:** `DELETE`  
 **Descrição:** Exclui uma empresa do banco de dados com base no ID fornecido.
 
 **Requisição:**
 
-- **URL:** `/company/<id>`
+- **URL:** `/company/<cnpj>`
 - **Método:** `DELETE`
 - **Parâmetros:**
-  - `id` (obrigatório): O ID da empresa a ser excluída.
+  - `cnpj` (obrigatório): O cnpj da empresa a ser excluída.
 
 **Exemplo de Requisição:**
 http

@@ -34,14 +34,15 @@ def validate_company_data(data):
     return True, None
 
 def validate_update_data(data):
-    required_fields = ['business_name', 'cnae']
-    cnae = data['cnae']
+    cnae = data.get('cnae')  # Obtém o CNAE, se fornecido
+    business_name = data.get('business_name')  # Obtém o nome da empresa, se fornecido
     
-    for field in required_fields:
-        if field not in data or not data[field].strip():
-            return False, f"Campo obrigatório ausente ou vazio: {field}"
+    # Verifica se pelo menos um dos campos foi fornecido
+    if not business_name and not cnae:
+        return False, "Pelo menos um dos campos 'business_name' ou 'cnae' deve ser fornecido."
 
-    if not re.match(r'^\d{7}$', cnae):
+    # Validação do CNAE, se fornecido
+    if cnae and not re.match(r'^\d{7}$', cnae):
         return False, "CNAE inválido. Deve conter 7 dígitos numéricos."
     
     return True, None
@@ -156,16 +157,20 @@ def create_company():
         db.session.rollback()
         return make_response(message=f"Erro ao registar empresa:{str(e)}", status_code=500)
 
-def update_company(id):
+def update_company(cnpj):
     try:
+        if not cnpj:
+            return make_response(message="CNPJ não fornecido.", status_code=400)
         data = request.get_json()
-        company = Empresa.query.get(id)
+        cnpj = str(cnpj) 
+        
+        company = Empresa.query.filter_by(cnpj=cnpj, deleted_at=None).first()
         if not company:
-            return jsonify({"message": "Company not found"}), 404
+            return make_response(message="Empresa não encontrada", status_code=404)
 
         is_valid, error_message = validate_update_data(data)
         if not is_valid:
-            return make_response(message=error_message, status_code = 400)
+            return make_response(message=error_message, status_code=400)
 
         company.business_name = data.get('business_name', company.business_name)
         company.cnae = data.get('cnae', company.cnae)
@@ -176,21 +181,22 @@ def update_company(id):
         )
     except Exception as e:
         db.session.rollback()
-        return make_response(message=f"Error ao Atualizar empresa: {str(e)}", status_code=500)
-
-def delete_company(id):
+        return make_response(message=f"Erro ao atualizar empresa: {str(e)}", status_code=500)
+       
+def delete_company(cnpj):
     try:
-        company = Empresa.query.get(id)
-        if not company:
-            return make_response(message="Company not found", status_code=404)
+        if not cnpj:
+            return make_response(message="CNPJ não fornecido.", status_code=400)
 
-        if company.deleted_at:
-            return make_response(message="Empresa já está excluída", status_code=400)
+        cnpj = str(cnpj)
+        company = Empresa.query.filter_by(cnpj=cnpj, deleted_at=None).first()
+
+        if not company:
+            return make_response(message="Empresa não encontrada", status_code=404)
 
         company.deleted_at = datetime.utcnow()  # Marca a data de deleção
         db.session.commit()
         return make_response(message="Empresa excluída com sucesso", status_code=204)
     except Exception as e:
         db.session.rollback()
-        return make_response(message=f"Error ao excluir empresa: {str(e)}", status_code=500)
-
+        return make_response(message=f"Erro ao excluir empresa: {str(e)}", status_code=500)
