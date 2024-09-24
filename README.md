@@ -69,7 +69,7 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
 
 1. **Acesse o Swagger**:
    Abra o seu navegador e digite a seguinte URL:
-   **[http://localhost:5000/swagger/](http://localhost:5000/apidocs/#/default/get_companies)**
+   **[http://localhost:5000/apidocs/](http://localhost:5000/apidocs/#/)**
 
 2. **Interaja com a API**:
    Uma vez na página do Swagger, você verá uma lista das rotas disponíveis. Clique na rota desejada para expandir suas opções. Você pode visualizar a documentação e testar as requisições diretamente pela interface.
@@ -96,7 +96,7 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
 - **Corpo da Requisição:**
   ```json
   {
-    "cnpj": "12345678000195", //user o gerador de CNPJ: https://www.4devs.com.br/gerador_de_cnpj
+    "cnpj": "12345678000195", //Usar o gerador de CNPJ: https://www.4devs.com.br/gerador_de_cnpj
     "register_name": "Nome Registrado da Empresa",
     "business_name": "Nome Fantasia da Empresa",
     "cnae": "1234567"
@@ -160,6 +160,7 @@ Este projeto foi inicialmente desenvolvido para rodar utilizando um ambiente vir
 - **URL:** `/companies`
 - **Método:** `GET`
 - **Parâmetros da Query:**
+
   - `offset` (opcional): Número de registros a serem pulados (padrão: 0).
   - `limit` (opcional): Número de registros a serem retornados por página (padrão: 20).
   - `sort` (opcional): Campo pelo qual ordenar os resultados (padrão: `created_at`). Os campos válidos são: `id`, `cnpj`, `register_name`, `business_name`, `cnae`, `created_at`.
